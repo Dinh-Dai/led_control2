@@ -1,42 +1,19 @@
-# Platform IO: Libraries Usage Demo 
-By Nguyễn Anh Tuấn
+# LED Control Project
 
-_Dùng cho lớp "Phát triển ứng dụng IoT" tại khoa Vật lý - HUS_
+## Mô Tả Dự Án
+Dự án này cho phép điều khiển hai LED bằng một nút bấm sử dụng thư viện OneButton. 
 
-## Mục đích 
+### Tính Năng
+- **Single Click**: Bật/tắt LED hiện tại (LED1 hoặc LED2).
+- **Double Click**: Chuyển đổi giữa LED1 và LED2.
+- **Long Press**: Nhấp nháy LED đang được điều khiển với tần suất 200ms.
 
-Minh chứng trực quan việc sử dụng môi trường phát triển tích hợp PlatformIO. Trong việc:
-- Sử dụng thư viện tự phát triển (user library) 
-- Sử dụng thư viện mã mở có sẵn từ cộng đồng (hoặc bên thứ ba)
-- Phát triển mã thống nhất cho dự án sử dụng đa nền tảng phần cứng
-- Trực quan hóa các bước làm việc, và thao tác trên nền tảng PlatformIO cho phát triển firmware.
+### Phần Cứng
+- LED1: Kết nối với GPIO D2
+- LED2: Kết nối với GPIO D3
+- Nút bấm: Kết nối với GPIO D4
 
-## Phần cứng 
-Trong dự án demo này, tôi sử dụng hai board phát triển
-1. ESP32 Devkit v1:
-    - Con chip ESP32 kiến trúc xtensa, lõi kép
-    - Tích hợp Blue LED vào chân GPIO02, active level = HIGH 
-    - Tích hợp nút bấm (BOOT) vào chân GPIO00, active level = LOW
-    - SV nên: Tra cứu và xem schematic của board này để xem chi tiết.
-
-2. ESP32-C3 Super Mini:
-    - Con chip ESP32-C3, kiến trúc RISCV, lõi đơn 
-    - Tích hợp Blue LED vào chân GPIO08, active level = LOW
-    - Tích hợp nút bấm (BOOT) chân GPIO09, active level = LOW 
-    - SV có thể: Tra cứu và xem schematic của board này để xác nhận các phần cứng trên.
-
-## Yêu cầu chức năng 
-Chức năng chung của dự án này, khá đơn giản nhưng để làm tốt thì cần mức độ chuyên nghiệp nhất định. Dự án này cũng minh họa cách tổ chức mã, cách viết mã sạch trong C++. 
-
-Yêu cầu viết chương trình có chức năng sau:
-    + bấm nút một lần (single click) để bật/tắt LED (đảo trạng thái). 
-    + nhấn giữ >2s (hold) thì LED sẽ chuyển sang trạng thái nhấp nháy liên tục (blink 200ms một lần)
-    + nếu tiếp tục nhấn single click thì LED lại chuyển trạng thái bật/tắt 
-    + Lưu ý: khử rung phím bấm 
-
-## Các dự án trong `workspace` này
-
-- Sử dụng thư viện tự viết (user libraries) để đạt chức năng nói trên, xem chi tiết trong thư mục dự án `PushBTN_User_Lib_Demo`.
-- Sử dụng thư viện OneButton (open source lib) để đạt chức năng tương tự. Xem chi tiết hướng dẫn trong `OneButton_Lib_Demo/README.md`
-
-**Lưu ý**: Sinh viên có thể (và nên) `git clone <đường dẫn>` repo này về máy cá nhân để biên dịch, chạy thử, và có thể thử nghiệm, phát triển thêm các ý tưởng riêng của mình dựa trên hướng dẫn.
+### Hướng Dẫn Sử Dụng
+1. Nhấn một lần để bật/tắt LED đang điều khiển.
+2. Nhấn đúp để chuyển đổi giữa hai LED.
+3. Giữ nút để nhấp nháy LED đang điều khiển.
